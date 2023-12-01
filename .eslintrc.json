@@ -1,3 +1,95 @@
 {
-  "extends": "next/core-web-vitals"
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:@next/next/recommended"
+	],
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
+	"overrides": [],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"plugins": [
+		"react",
+		"@typescript-eslint"
+	],
+	"rules": {
+		"indent": [
+			"error",
+			"tab",
+			{
+				"SwitchCase": 1
+			}
+		],
+		"linebreak-style": [
+			"error",
+			"unix"
+		],
+		"max-len": [
+			"warn",
+			{
+				"code": 90,
+				"tabWidth": 2,
+				"ignoreStrings": true,
+				"ignoreTemplateLiterals": true
+			}
+		],
+		"quotes": [
+			"error",
+			"double",
+			{
+				"allowTemplateLiterals": true
+			}
+		],
+		"semi": [
+			"error",
+			"never"
+		],
+		"multiline-ternary": [
+			"error",
+			"always-multiline"
+		],
+		"array-bracket-spacing": [
+			"warn",
+			"always",
+			{
+				"arraysInArrays": false,
+				"objectsInArrays": false
+			}
+		],
+		"object-curly-spacing": [
+			"warn",
+			"always",
+			{
+				"arraysInObjects": false,
+				"objectsInObjects": false
+			}
+		],
+		"@typescript-eslint/no-explicit-any": "off",
+		"@typescript-eslint/no-inferrable-types": "off",
+		"react/react-in-jsx-scope": "off",
+		"react/jsx-filename-extension": [
+			1,
+			{
+				"extensions": [
+					".js",
+					".jsx",
+					".ts",
+					".tsx"
+				]
+			}
+		],
+		"@next/next/no-img-element": "off"
+	}
 }
