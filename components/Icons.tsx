@@ -3,7 +3,7 @@ import type { IconProps } from "@/types"
 type SoundIconProps = IconProps & {
 	muted: boolean
 }
-export function Sound({ muted, size = 20, fill = "black", ...props }: SoundIconProps) {
+export function SoundIcon({ muted, size = 20, fill = "black", ...props }: SoundIconProps) {
 	const color = fill || "#000000"
 
 	return (
@@ -41,6 +41,23 @@ export function Sound({ muted, size = 20, fill = "black", ...props }: SoundIconP
 				stroke={color}
 				visibility={!muted ? "hidden": "visible"}
 			/>
+		</svg>
+	)
+}
+
+export function XIcon({ size, ...props }: IconProps) {
+	return (
+		<svg
+			viewBox="0 0 20 20"
+			width={size}
+			height={size}
+			fill="none"
+			stroke="black"
+			strokeWidth={2.5}
+			strokeLinecap="round"
+			{...props}>
+			<path d="M 1,1 19,19"/>
+			<path d="M 19,1 1,19"/>
 		</svg>
 	)
 }

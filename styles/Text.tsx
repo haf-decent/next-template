@@ -17,6 +17,7 @@ export type TextProps = {
 }
 
 export const TextStyle = css<TextProps>`
+	user-select: text;
 	${({ theme, $color = undefined }) => $color && css`color: ${(theme.colors as any)[$color] || $color};`}
 	${({ $textAlign = undefined }) => $textAlign && css`text-align: ${$textAlign};`}
 	${({ $fontFamily = undefined }) => $fontFamily && css`font-family: ${$fontFamily};`}
@@ -43,30 +44,26 @@ export const Text = styled.div<TextProps>`
 `
 
 export const Title = styled.h1<TextProps>`
-		${TextStyle}
-		${({ $fontFamily }) => $fontFamily && css`font-family: ${$fontFamily};`}
-		font-size: ${({ theme, $fontSize }) => `
-				${typeof $fontSize === "number" ? `${$fontSize}px`: $fontSize || theme.font.extraLarge};
-		`}
-		${({ $letterSpacing }) => $letterSpacing && css`
-				letter-spacing: ${typeof $letterSpacing === "string" ? $letterSpacing: `${$letterSpacing}px`};
-		`}
-		${({ $fontWeight = 700 }) => $fontWeight && css`font-weight: ${$fontWeight};`}
-		// -webkit-text-stroke: 0.025em black;
-		// text-shadow: 1px 1px 0.5px black,
-		//     -1px 1px 0.5px black,
-		//     1px -1px 0.5px black,
-		//     -1px -1px 0.5px black,
-		//     1px 0px 0.5px black,
-		//     -1px 0px 0.5px black,
-		//     0px 1px 0.5px black,
-		//     0px -1px 0.5px black,
-		//     1.3px 1.3px 0.25px black,
-		//     -1.3px 1.3px 0.25px black,
-		//     1.3px -1.3px 0.25px black,
-		//     -1.3px -1.3px 0.25px black,
-		//     1.8px 0px 0.25px black,
-		//     -1.8px 0px 0.25px black,
-		//     0px 1.8px 0.25px black,
-		//     0px -1.8px 0.25px black;
+	${TextStyle}
+	${({ $fontFamily }) => $fontFamily && css`font-family: ${$fontFamily};`}
+	font-size: ${({ theme, $fontSize }) => `
+			${typeof $fontSize === "number" ? `${$fontSize}px`: $fontSize || theme.font.extraLarge};
+	`}
+	// -webkit-text-stroke: 0.025em black;
+	// text-shadow: 1px 1px 0.5px black,
+	//     -1px 1px 0.5px black,
+	//     1px -1px 0.5px black,
+	//     -1px -1px 0.5px black,
+	//     1px 0px 0.5px black,
+	//     -1px 0px 0.5px black,
+	//     0px 1px 0.5px black,
+	//     0px -1px 0.5px black,
+	//     1.3px 1.3px 0.25px black,
+	//     -1.3px 1.3px 0.25px black,
+	//     1.3px -1.3px 0.25px black,
+	//     -1.3px -1.3px 0.25px black,
+	//     1.8px 0px 0.25px black,
+	//     -1.8px 0px 0.25px black,
+	//     0px 1.8px 0.25px black,
+	//     0px -1.8px 0.25px black;
 `
