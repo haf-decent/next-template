@@ -56,6 +56,10 @@
 			"error",
 			"never"
 		],
+		"eol-last": [
+			"error",
+			"always"
+		],
 		"multiline-ternary": [
 			"error",
 			"always-multiline"

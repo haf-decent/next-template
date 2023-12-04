@@ -9,6 +9,7 @@ type MarqueeProps = FlexProps & {
 	text: string | string[],
 	staticWidth?: number,
 	spacing?: number,
+	speed?: number,
 	reverse?: boolean,
 	children?: ReactChildren
 }
@@ -17,6 +18,7 @@ export function Marquee({
 	text,
 	staticWidth,
 	spacing = 24,
+	speed = 1,
 	reverse = false,
 	children,
 	...props
@@ -58,6 +60,7 @@ export function Marquee({
 		<Container {...props}>
 			<Banner
 				$scrollDistance={chunkWidth}
+				$speed={speed}
 				$reverse={reverse}>
 				<Flex
 					$width="100%"
@@ -98,17 +101,21 @@ const Container = styled(CenteredFlex)`
 	overflow: visible;
 `
 
-const Banner = styled(Flex)<{ $scrollDistance?: number, $reverse: boolean }>`
+const Banner = styled(Flex)<{
+	$scrollDistance?: number,
+	$speed: number,
+	$reverse: boolean
+}>`
 	position: absolute;
 	left: 0px;
 	right: 0px;
 	overflow: visible;
-	${({ $reverse, $scrollDistance }) => {
+	${({ $reverse, $speed, $scrollDistance }) => {
 		if (!$scrollDistance) return ""
 		const d = $reverse ? -$scrollDistance: $scrollDistance
 		return css`
 			& > div {
-				animation: ${createScrollAnimation(d)} ${$scrollDistance / 50}s linear infinite;
+				animation: ${createScrollAnimation(d)} ${Math.max($speed * $scrollDistance / 50, 0.5)}s linear infinite;
 				overflow: visible;
 			}
 		`

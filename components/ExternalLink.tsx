@@ -1,28 +1,26 @@
-import { type HTMLProps } from "react"
-
-import type { ReactChildren } from "@/types"
+import type { AnchorProps, ReactChildren } from "@/types"
 
 import styled from "styled-components"
-import { TextStyle, type TextProps } from "@/styles"
+import { type FlexProps, FlexStyle } from "@/styles"
 
-export type ExternalLinkProps = TextProps & Omit<HTMLProps<HTMLAnchorElement>, "ref" | "as"> & {
-	underlined?: true,
+export type ExternalLinkProps = FlexProps & AnchorProps & {
+	href: string,
+	underlined?: boolean,
 	children: ReactChildren
 }
-
 export function ExternalLink({ underlined, children, ...props }: ExternalLinkProps) {
 	return (
 		<Link
 			target="_blank"
 			rel="noopener noreferrer"
-			$textDecoration={underlined && "underline"}
+			$textDecoration={underlined ? "underline": undefined}
 			{...props}>
 			{children}
 		</Link>
 	)
 }
 
-const Link = styled.a<TextProps>`
-		${TextStyle}
+const Link = styled.a<FlexProps>`
+		${FlexStyle}
 		cursor: pointer;
 `

@@ -21,10 +21,10 @@ export const Grid = styled.div<GridProps>`
 	align-items: ${({ $align = "stretch" }) => $align};
 `
 
-export const FullWidthGridContainer = styled.div`
+export const FullWidthGridElement = css`
 	grid-column: 1 / -1;
 `
 
-export const FullHeightGridContainer = styled.div`
+export const FullHeightGridElement = css`
 	grid-row: 1 / -1;
 `
