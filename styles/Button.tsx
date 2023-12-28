@@ -9,24 +9,25 @@ export type ButtonProps = FlexProps & {
 
 export const ButtonStyle = css<ButtonProps>`
 	${FlexStyle}
+
+	padding: 8px 20px;
+	border-radius: 999px;
+
+	${({ theme, $variant = "default" }) => ($variant === "default"
+		? css`background: ${theme.colors.background};`
+		: css`background: ${(theme.colors as any)[$variant] || "transparent"};`
+	)}
 	outline: none;
 	border: ${({ theme, $unbordered }) => $unbordered ? "none": theme.border.medium};
 	box-shadow: none;
-	line-height: 24px;
+
 	font-size: ${({ theme }) => theme.font.small};
+	line-height: 24px;
 	font-weight: 600;
 	white-space: nowrap;
-	padding: 8px 20px;
-	color: black;
-	${({ theme, $variant = "default" }) => ($variant === "default"
-		? css`
-			backdrop-filter: blur(13px);
-			background: transparent;
-		`
-		: css`background: ${(theme.colors as any)[$variant] || "transparent"};`
-	)}
-	border-radius: 999px;
+
 	transition: all 0.3s ease;
+	
 	cursor: pointer;
 
 	&:disabled {

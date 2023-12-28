@@ -1,12 +1,16 @@
-import { Dispatch, ReactNode, createContext, useContext, useMemo, useReducer } from "react"
+import { type Dispatch, createContext, useContext, useMemo, useReducer } from "react"
+
+import type { ReactChildren } from "@/types"
 
 import { ThemeProvider as SCThemeProvider } from "styled-components"
 import { type Theme, darkTheme } from "@/styles/themes"
 
+type ThemeId = "light" | "dark"
+
 type ThemeContext = {
-	themeId: "light" | "dark",
+	themeId: ThemeId,
 	theme: Theme,
-	toggleTheme: Dispatch<"light" | "dark" | undefined>
+	toggleTheme: Dispatch<ThemeId | undefined>
 }
 
 const defaultState: ThemeContext = {
@@ -20,13 +24,10 @@ const ThemeContext = createContext<ThemeContext>(defaultState)
 export const useTheme = () => useContext(ThemeContext)
 
 type Props = {
-	children?: ReactNode | ReactNode[]
+	children?: ReactChildren
 }
 export function ThemeProvider({ children }: Props) {
-	const [ themeId, toggleTheme ] = useReducer((
-		t: ThemeContext[ "themeId" ],
-		id?: ThemeContext[ "themeId" ]
-	) => {
+	const [ themeId, toggleTheme ] = useReducer((t: ThemeId, id?: ThemeId) => {
 		if (id) return id
 
 		return t === "light"
@@ -37,6 +38,7 @@ export function ThemeProvider({ children }: Props) {
 	const theme = useMemo(() => {
 		switch(themeId) {
 			case "light":
+				// If you have a lightTheme, add it here
 				return darkTheme
 			case "dark":
 				return darkTheme

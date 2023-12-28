@@ -9,13 +9,13 @@ import Document, {
 import { ServerStyleSheet } from "styled-components"
 
 import {
-	LINK_TO_TWITTER,
 	SITE_BASE_URL,
 	SITE_DESCRIPTION,
 	SITE_FAVICON,
 	SITE_OG_IMAGE,
 	SITE_OG_IMAGE_DIM,
-	SITE_TITLE
+	SITE_TITLE,
+	TWITTER_HANDLE
 } from "@/utils"
 
 export default class MyDocument extends Document {
@@ -48,9 +48,6 @@ export default class MyDocument extends Document {
 		return (
 			<Html>
 				<Head>
-					<meta name="viewport" content="width=device-width, initial-scale=1" />
-					<meta name="format-detection" content="telephone=no" />
-
 					<meta name="title" content={SITE_TITLE} />
 					<meta name="description" content={SITE_DESCRIPTION} />
 
@@ -59,6 +56,7 @@ export default class MyDocument extends Document {
 					<meta name="apple-mobile-web-app-status-bar-style" content="default" />
 					<meta name="apple-mobile-web-app-title" content={SITE_TITLE} />
 					<meta name="mobile-web-app-capable" content="yes" />
+					<meta name="format-detection" content="telephone=no" />
 
 					<meta name="msapplication-config" content="/browserconfig.xml" />
 					<meta name="msapplication-TileColor" content="#FFFFFF" />
@@ -78,7 +76,7 @@ export default class MyDocument extends Document {
 					<meta name="twitter:title" content={SITE_TITLE} />
 					<meta name="twitter:description" content={SITE_DESCRIPTION} />
 					<meta name="twitter:image" content={SITE_OG_IMAGE || `${SITE_BASE_URL}/${SITE_FAVICON}`} />
-					<meta name="twitter:creator" content={LINK_TO_TWITTER} />
+					<meta name="twitter:creator" content={TWITTER_HANDLE} />
 
 					<meta property="og:type" content="website" />
 					<meta property="og:title" content={SITE_TITLE} />
@@ -92,14 +90,14 @@ export default class MyDocument extends Document {
 					</>)}
 
 					{/* eslint-disable-next-line */}
-					{/* <script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+					{/* <script async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}></script>
 					<script dangerouslySetInnerHTML={{
 						__html: `
 						window.dataLayer = window.dataLayer || [];
 						function gtag(){dataLayer.push(arguments);}
 						gtag('js', new Date());
 
-						gtag('config', '');
+						gtag('config', '${GOOGLE_ANALYTICS_ID}');
 						`
 					}}/> */}
 				</Head>

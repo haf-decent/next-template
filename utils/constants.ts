@@ -9,7 +9,8 @@ export const SITE_BASE_URL = ""
 export const SITE_OG_IMAGE = ""
 export const SITE_OG_IMAGE_DIM: { width: string, height: string } | undefined = undefined
 
-export const LINK_TO_TWITTER = ""
+export const TWITTER_HANDLE = ""
+export const LINK_TO_TWITTER = `https://twitter.com/${TWITTER_HANDLE}`
 
 export type MediaWidth =
 	"largerThanSmall"

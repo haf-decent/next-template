@@ -7,3 +7,19 @@ export type AnchorProps = Omit<HTMLProps<HTMLAnchorElement>, "ref" | "as" | "hre
 export type IconProps = Omit<SVGProps<SVGElement>, "ref"> & {
 	size?: number
 }
+
+export type DirectionalIconProps = IconProps & {
+	direction?: "up"
+		| "down"
+		| "left"
+		| "right"
+		| "upRight"
+		| "upLeft"
+		| "downRight"
+		| "downLeft"
+}
+
+export type Sorting = {
+	key: string,
+	direction: "desc" | "asc"
+}

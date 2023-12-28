@@ -1,8 +1,9 @@
 import styled, { css } from "styled-components"
+import { type TextProps, TextStyle } from "./Text"
 
 type Alignment = "stretch" | "flex-start" | "center" | "flex-end" | "space-between" | "space-around" | "space-evenly"
 
-export type GridProps = {
+export type GridProps = TextProps & {
 	$width?: string,
 	$columns?: string,
 	$rows?: string,
@@ -11,7 +12,8 @@ export type GridProps = {
 	$align?: Alignment
 }
 
-export const Grid = styled.div<GridProps>`
+export const GridStyle = css<GridProps>`
+	${TextStyle}
 	display: grid;
 	${({ $width = undefined }) => $width && css`width: ${$width};`}
 	${({ $columns = undefined }) => $columns && css`grid-template-columns: ${$columns};`}
@@ -21,10 +23,14 @@ export const Grid = styled.div<GridProps>`
 	align-items: ${({ $align = "stretch" }) => $align};
 `
 
-export const FullWidthGridElement = css`
+export const Grid = styled.div<GridProps>`
+	${GridStyle}
+`
+
+export const FullWidthGridStyle = css`
 	grid-column: 1 / -1;
 `
 
-export const FullHeightGridElement = css`
+export const FullHeightGridStyle = css`
 	grid-row: 1 / -1;
 `
