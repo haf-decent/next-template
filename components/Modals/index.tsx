@@ -4,7 +4,7 @@ import type { ReactChildren } from "@/types"
 
 import styled, { css } from "styled-components"
 import { CenteredFlex, Flex, Text, createFadeInAnimation } from "@/styles"
-import { XIcon } from "@/components/Icons"
+import { X } from "react-feather"
 
 export type ModalProps = {
 	heading?: ReactChildren,
@@ -42,7 +42,7 @@ export function Modal({
 						}
 						{onClose && (
 							<CloseContainer onClick={onClose}>
-								<XIcon size={14}/>
+								<X size={14}/>
 							</CloseContainer>
 						)}
 					</ModalHeader>

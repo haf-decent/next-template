@@ -1,9 +1,8 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
-export function useOutsideClick(
-	ref: HTMLElement | null | undefined,
-	onOutsideClick: () => void
-) {
+export function useOutsideClick<T extends HTMLElement>(onOutsideClick: () => void) {
+	const [ ref, setRef ] = useState<T | null>(null)
+
 	useEffect(() => {
 		if (!ref) return
 
@@ -18,4 +17,6 @@ export function useOutsideClick(
 			window.removeEventListener("click", onClick)
 		}
 	}, [ ref, onOutsideClick ])
+
+	return [ ref, setRef ]
 }
