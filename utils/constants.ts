@@ -12,21 +12,21 @@ export const SITE_OG_IMAGE_DIM: { width: string, height: string } | undefined = 
 export const TWITTER_HANDLE = ""
 export const LINK_TO_TWITTER = `https://twitter.com/${TWITTER_HANDLE}`
 
-export type MediaWidth =
+export type Breakpoint =
 	"largerThanSmall"
 	| "largerThanMedium"
 	| "largerThanLarge"
-export const MEDIA_WIDTHS: Record<MediaWidth, number> = {
+export const BREAKPOINTS: Record<Breakpoint, number> = {
 	largerThanSmall: 576,
 	largerThanMedium: 869,
 	largerThanLarge: 1080,
 }
 
-export const mediaWidthTemplates: Record<MediaWidth, typeof css> =
-	(Object.keys(MEDIA_WIDTHS) as MediaWidth[])
+export const breakpointTemplates: Record<Breakpoint, typeof css> =
+	(Object.keys(BREAKPOINTS) as Breakpoint[])
 		.reduce((accumulator, size) => {
 			(accumulator as any)[size] = (a: any, b: any, c: any) => css`
-					@media (min-width: ${MEDIA_WIDTHS[size]}px) {
+					@media (min-width: ${BREAKPOINTS[size]}px) {
 							${css(a, b, c)}
 					}
 			`

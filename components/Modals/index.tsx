@@ -98,8 +98,8 @@ export const ModalHeader = styled(Flex).attrs(props => ({
 }))`
 	padding: 12px;
 
-	${({ theme }) => theme.mediaWidth.largerThanSmall`
-			padding: 24px;
+	${({ theme }) => theme.breakpoint.largerThanSmall`
+		padding: 24px;
 	`}
 `
 export const CloseContainer = styled(CenteredFlex)`
@@ -118,13 +118,13 @@ export const ModalBody = styled(Flex).attrs(props => ({
 }))`
 	overflow: hidden auto;
 	& > * {
-			padding: 12px;
+		padding: 12px;
 	}
 
-	${({ theme }) => theme.mediaWidth.largerThanSmall`
-			& > * {
-					padding: 24px;
-			}
+	${({ theme }) => theme.breakpoint.largerThanSmall`
+		& > * {
+			padding: 24px;
+		}
 	`}
 `
 

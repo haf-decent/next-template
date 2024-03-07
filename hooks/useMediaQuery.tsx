@@ -1,16 +1,15 @@
 import { useEffect, useRef, useState } from "react"
-import { type MediaWidth, MEDIA_WIDTHS } from "@/utils"
+import { type Breakpoint, BREAKPOINTS } from "@/utils"
 
-export function useMediaQuery(query: MediaWidth | string) {
+export function useMediaQuery(query: Breakpoint | string) {
 	const [ matches, setMatches ] = useState(false)
 	const matchesRef = useRef(matches)
 	matchesRef.current = matches
 
 	useEffect(() => {
 		const media = window.matchMedia(
-			// eslint-disable-next-line no-prototype-builtins
-			MEDIA_WIDTHS.hasOwnProperty(query)
-				? `(min-width: ${MEDIA_WIDTHS[ query as MediaWidth ]}px)`
+			Object.prototype.hasOwnProperty.call(BREAKPOINTS, query)
+				? `(min-width: ${BREAKPOINTS[ query as Breakpoint ]}px)`
 				: query
 		)
 
