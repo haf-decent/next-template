@@ -46,11 +46,12 @@ export function ThemeProvider({ children }: Props) {
 	}, [ themeId ])
 
 	return (
-		<ThemeContext.Provider value={{
-			themeId,
-			theme,
-			toggleTheme
-		}}>
+		<ThemeContext.Provider
+			value={{
+				themeId,
+				theme,
+				toggleTheme
+			}}>
 			<SCThemeProvider theme={theme}>
 				{children}
 			</SCThemeProvider>

@@ -66,19 +66,11 @@
 		],
 		"array-bracket-spacing": [
 			"warn",
-			"always",
-			{
-				"arraysInArrays": false,
-				"objectsInArrays": false
-			}
+			"always"
 		],
 		"object-curly-spacing": [
 			"warn",
-			"always",
-			{
-				"arraysInObjects": false,
-				"objectsInObjects": false
-			}
+			"always"
 		],
 		"@typescript-eslint/no-explicit-any": "off",
 		"@typescript-eslint/no-inferrable-types": "off",
@@ -93,6 +85,10 @@
 					".tsx"
 				]
 			}
+		],
+		"react/jsx-first-prop-new-line": [
+			"warn",
+			"multiline"
 		],
 		"@next/next/no-img-element": "off"
 	}
