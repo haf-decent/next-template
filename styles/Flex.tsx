@@ -9,7 +9,6 @@ export type FlexProps = TextProps & {
 	$justify?: Alignment,
 	$align?: Alignment,
 	$flexWrap?: boolean,
-	$width?: string,
 	$gap?: number | string,
 	$grow?: number,
 	$shrink?: number
@@ -22,7 +21,6 @@ export const FlexStyle = css<FlexProps>`
 	justify-content: ${({ $justify = "stretch" }) => $justify};
 	align-items: ${({ $align = "stretch" }) => $align};
 	flex-wrap: ${({ $flexWrap = false }) => $flexWrap ? "wrap": "nowrap"};
-	${({ $width = undefined }) => $width && css`width: ${$width};`}
 	${({ $gap = undefined }) => $gap && css`gap: ${typeof $gap === "string" ? $gap: $gap + "px"};`}
 	${({ $grow = undefined }) => $grow !== undefined && css`flex-grow: ${$grow};`}
 	${({ $shrink = undefined }) => $shrink !== undefined && css`flex-shrink: ${$shrink};`}

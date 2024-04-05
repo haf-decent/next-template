@@ -1,6 +1,8 @@
 import styled, { css } from "styled-components"
 
 export type TextProps = {
+	$width?: string,
+	$height?: string,
 	$color?: string,
 	$textAlign?: "left" | "center" | "right",
 	$fontFamily?: string,
@@ -18,6 +20,8 @@ export type TextProps = {
 
 export const TextStyle = css<TextProps>`
 	user-select: text;
+	${({ $width = undefined }) => $width && css`width: ${$width};`}
+	${({ $height = undefined }) => $height && css`height: ${$height};`}
 	${({ theme, $color = undefined }) => $color && css`color: ${(theme.colors as any)[$color] || $color};`}
 	${({ $textAlign = undefined }) => $textAlign && css`text-align: ${$textAlign};`}
 	${({ $fontFamily = undefined }) => $fontFamily && css`font-family: ${$fontFamily};`}
@@ -39,7 +43,7 @@ export const TextStyle = css<TextProps>`
 	padding: ${({ $padding = "0px" }) => $padding};
 `
 
-export const Text = styled.div<TextProps>`
+export const Text = styled.span<TextProps>`
 	${TextStyle}
 `
 

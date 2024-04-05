@@ -9,6 +9,7 @@ import Document, {
 import { ServerStyleSheet } from "styled-components"
 
 import {
+	GOOGLE_ANALYTICS_ID,
 	SITE_BASE_URL,
 	SITE_DESCRIPTION,
 	SITE_FAVICON,
@@ -83,23 +84,26 @@ export default class MyDocument extends Document {
 					<meta property="og:description" content={SITE_DESCRIPTION} />
 					<meta property="og:site_name" content={SITE_TITLE} />
 					<meta property="og:url" content={SITE_BASE_URL} />
-					<meta property="og:image" content={`${SITE_BASE_URL}/${SITE_FAVICON}`} />
+					<meta property="og:image" content={SITE_OG_IMAGE || `${SITE_BASE_URL}/${SITE_FAVICON}`} />
 					{!!SITE_OG_IMAGE_DIM && (<>
 						<meta property="og:image:width" content={SITE_OG_IMAGE_DIM.width} />
 						<meta property="og:image:height" content={SITE_OG_IMAGE_DIM.height} />
 					</>)}
+					
+					{!!GOOGLE_ANALYTICS_ID && (<>
+						<script async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}></script>
+						<script
+							dangerouslySetInnerHTML={{
+								__html: `
+									window.dataLayer = window.dataLayer || [];
+									function gtag(){dataLayer.push(arguments);}
+									gtag('js', new Date());
 
-					{/* eslint-disable-next-line */}
-					{/* <script async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}></script>
-					<script dangerouslySetInnerHTML={{
-						__html: `
-						window.dataLayer = window.dataLayer || [];
-						function gtag(){dataLayer.push(arguments);}
-						gtag('js', new Date());
-
-						gtag('config', '${GOOGLE_ANALYTICS_ID}');
-						`
-					}}/> */}
+									gtag('config', '${GOOGLE_ANALYTICS_ID}');
+								`
+							}}
+						/>
+					</>)}
 				</Head>
 				<body>
 					<Main/>

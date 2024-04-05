@@ -47,7 +47,7 @@ export function usePlaylist(songs: string[], volume = 1) {
 		if (!songs.length || !audio) return
 
 		audio.src = songs[index]
-		audio.loop = false
+		audio.loop = songs.length === 1
 		audio.load()
 		setIsLoading(true)
 	}, [ audio, songs, index ])
